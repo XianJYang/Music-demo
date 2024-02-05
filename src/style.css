@@ -59,13 +59,8 @@ button:focus-visible {
 }
 
 #app {
-  background: url('../assets/bg-login/bg-night.jpg');
   width: 100%;
-  height: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  height: 100vh;
 }
 
 @media (prefers-color-scheme: light) {

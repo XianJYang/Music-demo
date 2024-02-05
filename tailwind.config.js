@@ -9,6 +9,9 @@ export default {
       }, 
       zIndex: {
         max: '9999',
+      },
+      LoginBackgroundImage: {
+        'LoginBack': "url('./src/assets/bg-login/bg-night.jpg')",
       }
     },
 

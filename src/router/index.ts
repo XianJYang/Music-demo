@@ -10,7 +10,13 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
       path: "/home",
-      component: () => import("@/pages/login/home.vue"),  
+      component: () => import("@/pages/home/home.vue"),  
+      // children:[
+      //   {
+      //     path:'Songlist', // 子页面1
+      //     component:() => import("@/pages/home/home.vue"),  
+      //   },
+      // ]
   },
   ];
   const router = createRouter({
