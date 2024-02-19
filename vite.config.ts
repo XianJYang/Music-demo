@@ -14,17 +14,12 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "src"), // @代替src
       "#": path.resolve(__dirname, "types"), // #代替types
-      "comps": path.resolve(__dirname, "src/components"),
     },
   },
   server: {
-    //用来配置跨域
-    host: '127.0.0.1',
-    open: true,
-    port: 8000,
     proxy: {
       '/api': {
-        target: 'https://jsonplaceholder.typicode.com',//目标服务器地址
+        target: 'https://m.maoyan.com/ajax/movieOnInfoList',//目标服务器地址
         changeOrigin: true,
         ws: true,
         rewrite: (path) => path.replace(/^\/api/, '')

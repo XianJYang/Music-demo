@@ -15,8 +15,9 @@ export class _Http {
     // 基础配置
     baseConfig:AxiosRequestConfig = {
         // 所有的请求地址前缀部分
-        baseURL: '/api',
-        timeout: 30000,
+        // baseURL: import.meta.env.VITE_API_URL,
+        baseURL:'/api',
+        timeout: 10000,
     
         // 异步请求是否携带cookie
         withCredentials: true,
@@ -70,14 +71,16 @@ export class _Http {
          * 2、移除loading
         */
         this.axiosInstance.interceptors.response.use(
-            (response: AxiosResponse): any => {
+            (response:any): any => {
                 // 对响应数据做点什么
                 return response
             },
             (error: any) => {
                 // 处理响应错误
                 // return Promise.reject(error);
-                // this.errorHandle(error)
+                this.errorHandle(error).then((error:any)=>{
+                  console.log(error)
+                })
             }
 
         )
@@ -137,15 +140,16 @@ export class _Http {
   public get<T = any>(
     url: string,
     config?: AxiosRequestConfig
-  ): Promise<AxiosResponse<ResType<T>>> {
+  ): Promise<any> {
     return this.axiosInstance.get(url, config);
   }
 
+
   public post<T = any>(
-    url: string,
+    url: string ,
     data?: any,
     config?: AxiosRequestConfig
-  ): Promise<AxiosResponse<ResType<T>>> {
+  ): Promise<any> {
     return this.axiosInstance.post(url, data, config);
   }
 
@@ -153,14 +157,14 @@ export class _Http {
     url: string,
     data?: any,
     config?: AxiosRequestConfig
-  ): Promise<AxiosResponse<ResType<T>>> {
+  ): Promise<any> {
     return this.axiosInstance.put(url, data, config);
   }
 
   public delete<T = any>(
     url: string,
     config?: AxiosRequestConfig
-  ): Promise<AxiosResponse<ResType<T>>> {
+  ): Promise<any> {
     return this.axiosInstance.delete(url, config);
   }
 }
