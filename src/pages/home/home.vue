@@ -2,7 +2,7 @@
   <div class="flex flex-row bg-slate-50 rounded-2xl shadow-lg  h-full  overflow-hidden">
     <!-- left -->
     <div
-      class="w-2/12 min-w-40 ackdrop-blur-xl  rounded-l-2xl  _backGColor shadow-inner flex flex-col  justify-items-center items-center">
+      class="w-1/12 min-w-40 ackdrop-blur-xl  rounded-l-2xl  _backGColor shadow-inner flex flex-col  justify-items-center items-center">
       <!-- logo -->
       <div class="w-full mb-6">
         <div class="flex flex-row justify-around items-center p-4 text-sm text-slate-200 rounded-xl w-full h-24">
@@ -41,7 +41,7 @@
 
       <!-- Function button -->
 
-      <div class="flex flex-row justify-items-center justify-between w-10/12 rounded-xl p-3 m-3 bg-color-button">
+      <div class="flex flex-row justify-items-center justify-between w-11/12 rounded-xl p-3 m-3 bg-color-button">
         <img :src="item.iconImg" v-for="(item, index) in _bottomIcon" :key="index"  class="_logoImg cursor-pointer" alt="" srcset=""
           @click="changeComponents(item)">
       </div>
@@ -49,10 +49,8 @@
     </div>
 
     <!-- right -->
-    <div class="w-10/12 rounded-r-2xl _backBColor">
-      <KeepAlive>
+    <div class="w-11/12 rounded-r-2xl">
         <component :is="currentTab"></component>
-      </KeepAlive>
     </div>
   </div>
 </template>
@@ -64,6 +62,7 @@ import RecommendedSings from '../../components/RecommendedSings/RecommendedSing.
 import ChartStatistics from '../../components/ChartStatistics/ChartStatistics.vue'   // 导入子组件
 import PlanetaryRoaming from '../../components/PlanetaryRoaming/PlanetaryRoaming.vue'   // 导入子组件
 import myMusic from '../../components/myMusic/myMusic.vue'   // 导入子组件
+import UserSettings from '../../components/UserSettings/UserSettings.vue'   // 导入子组件
 
 // import {useRouter} from 'vue-router'
 // const $router=useRouter()
@@ -83,7 +82,7 @@ let MenuList: any = ref([
   { title: "听歌统计", iconImg: new URL('../../assets/icon/bangdan.png', import.meta.url).href, checked: false,component:shallowRef(ChartStatistics) },
 ])
 let _bottomIcon:any =ref([
-  { title: "设置", iconImg: new URL('../../assets/icon/shezhi.png', import.meta.url).href,component:shallowRef(ChartStatistics) },
+  { title: "设置", iconImg: new URL('../../assets/icon/shezhi.png', import.meta.url).href,component:shallowRef(UserSettings) },
   { title: "对话", iconImg: new URL('../../assets/icon/duihua.png', import.meta.url).href,component:shallowRef(ChartStatistics) },
   { title: "提醒", iconImg: new URL('../../assets/icon/tixing.png', import.meta.url).href,component:shallowRef(ChartStatistics) },
 ])
@@ -114,6 +113,7 @@ const updateactor = () => {
 
 // 底部
 const changeComponents = (item:any) => {
+  console.log(item)
   currentTab = item.component
 }
 

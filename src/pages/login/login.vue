@@ -1,6 +1,7 @@
 <template>
-    <div class="flex flex-row items-center  h-full m-auto _color">
-    <div class="flex flex-col justify-items-center items-center text-center w-4/6 tracking-wider text-4xl p-5 leading-loose _3d">
+  <div class="flex flex-row items-center  h-full m-auto _color">
+    <div
+      class="flex flex-col justify-items-center items-center text-center w-4/6 tracking-wider text-4xl p-5 leading-loose _3d">
       After climbing a great hill, one only finds that there are many more hills to climb.</div>
     <div class="flex flex-col text-center w-2/6 p-6">
       <div class="flex flex-row items-center my-3 font-black">
@@ -17,9 +18,7 @@
           <label class="label cursor-pointer">
             <input type="checkbox" class="checkbox checkbox-sm checked:bg-red-500" v-model="isCheck" />
           </label>
-          <span
-            class="label-text ml-4 _button cursor-pointer"
-            @click="openText()">同意登录协议</span>
+          <span class="label-text ml-4 _button cursor-pointer" @click="openText()">同意登录协议</span>
         </div>
         <div class="justify-items-center mr-3 text-sm cursor-pointer">
           修改密码
@@ -34,8 +33,8 @@
 <script setup lang="ts">
 // import httpService from '../../request/https'
 import { reactive, ref } from 'vue'
-import {useRouter} from 'vue-router'
-const $router=useRouter()
+import { useRouter } from 'vue-router'
+const $router = useRouter()
 const openMsg = ref('')
 const isCheck = ref(false)
 const user = reactive({
@@ -74,14 +73,15 @@ const openText = async () => {
 .checkbox {
   border-color: #fff;
 }
-._button{
+
+._button {
   color: #fff;
 }
-  ._color{
-    color: #fff;
-    background-image: url(/src/assets/bg-login/bg-night.jpg);
-    background-size: 100% 100%;
-    background-repeat-x: repeat;
-  }
 
+._color {
+  color: #fff;
+  background-image: url(/src/assets/bg-login/bg-night.jpg);
+  background-size: 100% 100%;
+  background-repeat-x: repeat;
+}
 </style>
