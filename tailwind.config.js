@@ -12,6 +12,9 @@ export default {
       },
       LoginBackgroundImage: {
         'LoginBack': "url('./src/assets/bg-login/bg-night.jpg')",
+      },
+      fontSize:{
+        fs12:'12px'
       }
     },
 

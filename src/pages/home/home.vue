@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-row bg-slate-50 rounded-2xl shadow-lg  h-full  overflow-hidden">
+  <div class="flex flex-row bg-slate-50 rounded-2xl shadow-lg  h-full  overflow-hidden min-h-28 select-none">
     <!-- left -->
     <div
-      class="w-1/12 min-w-40 ackdrop-blur-xl  rounded-l-2xl  _backGColor shadow-inner flex flex-col  justify-items-center items-center">
+      class="w-1/12 min-w-40  min-h-20 ackdrop-blur-xl  rounded-l-2xl  _backGColor shadow-inner flex flex-col  justify-items-center items-center">
       <!-- logo -->
       <div class="w-full mb-6">
         <div class="flex flex-row justify-around items-center p-4 text-sm text-slate-200 rounded-xl w-full h-24">
@@ -42,14 +42,17 @@
       <!-- Function button -->
 
       <div class="flex flex-row justify-items-center justify-between w-11/12 rounded-xl p-3 m-3 bg-color-button">
-        <img :src="item.iconImg" v-for="(item, index) in _bottomIcon" :key="index"  class="_logoImg cursor-pointer" alt="" srcset=""
-          @click="changeComponents(item)">
+        <div v-for="(item, index) in _bottomIcon" :key="index"  @click="changeComponents(item)">
+          <img :src="item.iconImg"   class="_logoImg cursor-pointer"
+         >
+        </div>
+        
       </div>
 
     </div>
 
     <!-- right -->
-    <div class="w-11/12 rounded-r-2xl">
+    <div class="w-11/12 rounded-r-2xl p-4">
         <component :is="currentTab"></component>
     </div>
   </div>
@@ -57,7 +60,7 @@
 
 
 <script setup lang="ts">
-import { onMounted, ref,shallowRef } from 'vue'
+import { onMounted, ref, shallowRef } from 'vue';
 import RecommendedSings from '../../components/RecommendedSings/RecommendedSing.vue'   // 导入子组件
 import ChartStatistics from '../../components/ChartStatistics/ChartStatistics.vue'   // 导入子组件
 import PlanetaryRoaming from '../../components/PlanetaryRoaming/PlanetaryRoaming.vue'   // 导入子组件
@@ -79,7 +82,7 @@ let MenuList: any = ref([
   { title: "发现音乐", iconImg: new URL('../../assets/icon/zhuye.png', import.meta.url).href, checked: true,component:shallowRef(RecommendedSings) },
   { title: "我的音乐", iconImg: new URL('../../assets/icon/xihuan.png', import.meta.url).href, checked: false ,component:shallowRef(myMusic)},
   { title: "星球漫游", iconImg: new URL('../../assets/icon/xingqiu.png', import.meta.url).href, checked: false,component:shallowRef(PlanetaryRoaming) },
-  { title: "听歌统计", iconImg: new URL('../../assets/icon/bangdan.png', import.meta.url).href, checked: false,component:shallowRef(ChartStatistics) },
+  { title: "听歌统计", iconImg: new URL('../../assets/icon/shuju-29.png', import.meta.url).href, checked: false,component:shallowRef(ChartStatistics) },
 ])
 let _bottomIcon:any =ref([
   { title: "设置", iconImg: new URL('../../assets/icon/shezhi.png', import.meta.url).href,component:shallowRef(UserSettings) },
@@ -110,14 +113,12 @@ const updateactor = () => {
 // })
 // }
 
-
 // 底部
 const changeComponents = (item:any) => {
-  console.log(item)
   currentTab = item.component
 }
 
-
+// let msg3 = reactive([{title: "设置",isSHow:true}])
 
 onMounted(() => {
   // getIpcity()
@@ -128,7 +129,7 @@ onMounted(() => {
 
 </script>
 
-<style scoped lan="scss">
+<style scoped lang="scss">
 .bg-color-button {
   background: linear-gradient(to right bottom, rgb(248, 220, 220), #d1eaed);
 }

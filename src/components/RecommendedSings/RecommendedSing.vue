@@ -15,13 +15,21 @@
   
   
 <script setup lang="ts">
-import { onMounted, ref, reactive } from 'vue';
+import { onMounted, reactive } from 'vue';
 import httpService from '../../request/https'
-import { log } from 'console';
+interface VideoType<T =string> {
+    (img:T,star:T):Array<T>;
+}
+// const props = defineProps({
+//     msg3:{
+//         type:String,
+//         default:""
+//     }
+// })
+// console.log(props.msg3[0].title) // { msg2:"这是传级子组件的信息2" }
 
-
-let hotItem = reactive({
-    VideoList:[]
+let hotItem:any = reactive({
+    VideoList:[] as VideoType[]
 })
 /**
  * @description 推荐歌单
@@ -36,7 +44,6 @@ function Recommended(): void {
 onMounted(() => {
     // 执行推荐歌单 
     Recommended()
-    console.log('Xxxx')
 })
 
 

@@ -1,14 +1,13 @@
 <template>
-    <div >
-        PlanetaryRoaming
+    <div>
+
     </div>
 </template>
 
 <script setup lang="ts">
 
-
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>
